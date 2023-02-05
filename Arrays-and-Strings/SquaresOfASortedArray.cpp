@@ -19,4 +19,4 @@ class Solution {
         vector<int> sortedSquares(vector<int>& nums) {
 
         }
-}
+};
