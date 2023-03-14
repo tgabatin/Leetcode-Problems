@@ -1,4 +1,4 @@
 # Leetcode-Problems
-A compilation of the saved leetcode problems to add to daily code. 
+A compilation of the saved LeetCode problems to add to daily code. 
 
-The problems committed to this repository daily will be based on randomized programming language. Whatever randomized language selected for the week is the language that I will be coding in. This repository is primarily used for practice with a variety of programming languages that I am familiar with (or in the process of learning), and to keep track of my progress in programming. 
+The problems committed to this repository daily will be based on the problem that I have done for the day. A variety of Programming Languages will be used to show proficiency and understanding in the language, along with the structure and architecture of what was deemed a best fit depending on the problem that is being solved. (For example, I may choose to use Python/Java over C/C++ because the standard libraries and paradigm of the Programming Language made it suitable for the problem itself). Furthermore, alternative answers may be provided in commentary within the code to demonstrate alternative solutions to the problems for versatility. 
