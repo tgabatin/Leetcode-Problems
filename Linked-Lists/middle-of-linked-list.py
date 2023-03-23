@@ -9,9 +9,21 @@ class ListNode(object):
         self.val = val
         self.next = next
 
+
+"""
+Runtime Complexity: O(n)
+Spacetime Complexity: O(1)
+"""
 class Solution(object):
     def middleNode(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
         """
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
