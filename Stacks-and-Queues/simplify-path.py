@@ -20,16 +20,19 @@ Return the simplified canonical path.
 class Solution:
     def simplifyPath(self, path:str) -> str:
         directories = path.split('/')
-
-        stack = []
-
+        
+        non_empty_directories = []
         for directory in directories:
-            if directory == '.' or directory == '':
-                continue
-            elif directory == '..':
-                if stack:
-                    stack.pop()
-            else:
+            if directory and directory != '.':
+                non_empty_directories.append(directory)
+        directories = non_empty_directories
+            
+        stack = []
+            
+        for directory in directories:
+            if directory != '..':
                 stack.append(directory)
-
+            elif stack:
+                stack.pop()
+            
         return '/' + '/'.join(stack)
