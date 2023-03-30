@@ -10,6 +10,11 @@ greater element of nums2[j] in nums2. If there is no next greater element, then 
 Return an array ans of length nums1.length such that ans[i] is the next greater element as described above. 
 """
 
+"""
+Time Complexity: O(n)
+Space Complexity: O(n)
+"""
+
 from ast import List
 
 class Solution:
