@@ -18,4 +18,32 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        if not root:
+            return []
         
+        queue = deque([root])
+        result = []
+        left_to_right = False
+
+        while queue:
+            level = deque()
+            level_size = len(queue)
+
+            for i in range(level_size):
+                node = queue.popleft()
+
+                if left_to_right:
+                    level.append(node.val)
+                else:
+                    level.appendleft(node.val)
+
+                if node.left:
+                    queue.append(node.left)
+
+                if node.right:
+                    queue.append(node.right)
+
+            result.append(list(level))
+            left_to_right = not left_to_right
+
+        return result
