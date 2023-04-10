@@ -22,3 +22,23 @@ class Solution(object):
         :type destination: int
         :rtype: bool
         """
+        adj_list = {}
+        for edge in edges:
+            u,v = edge
+            if u not in adj_list:
+                adj_list[u] = []
+            adj_list[u].append(v)
+            if v not in adj_list:
+                adj_list[v] = []
+            adj_list[v].append(u)
+        visited_node = set()
+        def dfs(node):
+            if node == destination:
+                return True
+            visited_node.add(node)
+            for neighbor in adj_list[node]:
+                if neighbor not in visited_node:
+                    if dfs(neighbor):
+                        return True
+            return False
+        return dfs(source)
