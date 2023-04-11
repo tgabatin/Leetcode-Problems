@@ -13,6 +13,11 @@ Given edges and integers n, source, and destination, return true if there
 is a valid path from source to destination, or false otherwise.
 """
 
+"""
+Time Complexity: O(V+E)
+Space Complexity: O(V+E)
+"""
+
 class Solution(object):
     def validPath(self, n, edges, source, destination):
         """
