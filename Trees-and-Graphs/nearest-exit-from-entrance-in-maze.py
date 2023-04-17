@@ -15,14 +15,37 @@ nearest exit, or -1 if no such path exists.
 """
 
 """
-Time Complexity:
-Space Complexity:
+Time Complexity: O(mn)
+Space Complexity: O(mn)
 """
 
+from collections import deque
+
 class Solution(object):
-    def nearestExit(self, maze, entrace):
+    def nearestExit(self, maze, entrance):
         """
         :type maze: List[List[str]]
         :type entrance: List[int]
         :rtype: int
         """
+        m, n = len(maze), len(maze[0])
+        directions = [(0,1), (0,-1), (1,0), (-1,0)]
+        queue = deque([entrance[0], entrance[1], 0])
+        visited = set([(entrance[0], entrance[1])])
+
+        while queue:
+            front = queue.popleft()
+            row = front[0]
+            col = front[1]
+            distance = front[2]
+
+            if (row == 0 or row == m-1 or col == 0 or col == n-1) and (row, col) != tuple(entrance):
+                return distance
+            
+            for d in directions:
+                r, c = row + d[0], col + d[1]
+                if 0 <= r < m and 0 <= c < n and maze[r][c] == '.' and (r,c) not in visited:
+                    visited.add((r,c))
+                    queue.append((r,c, distance + 1))
+
+        return -1
