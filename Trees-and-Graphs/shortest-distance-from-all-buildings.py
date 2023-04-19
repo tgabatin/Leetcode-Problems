@@ -1,0 +1,27 @@
+"""
+You are given an m x n grid of values of 0, 1, or 2 where:
+
+- each 0 marks an empty land that you can pass by freely
+- each 1 marks a building that you cannot pass through, and
+- each 2 marks an obstacle that you cannot pass through
+
+You want to build a house on empty land that reaches all buildings in the 
+shortest total travel distane. You can only move up, down, left, and right.
+
+Return the shortest travel distance for such a house. If it is not possible to build
+such a house according to the above rules, return -1. 
+
+The total travel distance is the sum of the distances between the houses of the 
+friends and the meeting point.
+
+The distance is calculated using Manhattan Distance, where
+distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.
+"""
+
+class Solution(object):
+    def shortestDistance(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+
