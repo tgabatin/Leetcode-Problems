@@ -17,3 +17,38 @@ such mutation, return -1.
 Note that the starting point is assumed to be valid, so it might not be included in
 the bank. 
 """
+
+"""
+Time Complexity: O(nm^2)
+Space Complexity: O(nm^2)
+"""
+
+from collections import deque
+class Solution(object):
+    def minMutation(self, startGene, endGene, bank):
+        """
+        :type startGene: str
+        :type endGene: str
+        :type bank: List[str]
+        :rtype: int
+        """
+        if endGene not in bank:
+            return -1
+        
+        queue = deque([startGene, 0])
+        visited = set([startGene])
+
+        while queue:
+            gene, mutations = queue.popleft()
+            if gene == endGene:
+                return mutations
+            
+            for i in range(len(gene)):
+                for c in ['A', 'C', 'G', 'T']:
+                    new_gene = gene[:i] + c + gene[i+1:]
+                    if new_gene in bank and new_gene not in visited:
+                        visited.add(new_gene)
+                        queue.append((new_gene, mutations+1))
+        
+        return -1
+        
