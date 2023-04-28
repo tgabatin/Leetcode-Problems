@@ -9,9 +9,14 @@ only the last bulb.
 Return the number of bulbs that are on after n rounds.
 """
 
+"""
+Time Complexity: O(sqrt(n))
+Space Complexity: O(1)
+"""
 class Solution(object):
     def bulbSwitch(self, n):
         """
         :type n: int
         :rtype: int
         """
+        return int(n**0.5)
