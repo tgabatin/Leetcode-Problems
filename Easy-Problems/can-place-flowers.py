@@ -7,6 +7,10 @@ meas not empty, and an integer n, return true if n new flowers can be planted in
 the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
 """
 
+"""
+Time Complexity: O(n)
+Space Complexity: O(1)
+"""
 class Solution(object):
     def canPlaceFlowers(self, flowerbed, n):
         """
@@ -14,4 +18,13 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        
+        count = 0
+        i = 0
+        while i < len(flowerbed) and count < n:
+            if flowerbed[i] == 0 and (i == 0 or flowerbed[i-1] == 0) and (i==len(flowerbed) - 1 or flowerbed[i+1] == 0):
+                flowerbed[i] = 1
+                count += 1
+                i += 1
+            i += 1
+        return count >= n
+
