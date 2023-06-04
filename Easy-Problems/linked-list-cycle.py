@@ -16,6 +16,10 @@ class ListNode(object):
         self.val = x
         self.next - None
 
+"""
+Time Complexity: O(n)
+Space Complexity: O(n)
+"""
 class Solution(object):
     def hasCycle(self, head):
         """
