@@ -12,6 +12,10 @@ among all the kids, or false otherwise.
 Note that multiple kids can ahve the greatest number of candies. 
 """
 
+"""
+Time Complexity: O(n)
+Space Complexity: O(n)
+"""
 class Solution(object):
     def kidsWithCandies(self, candies, extraCandies):
         """
@@ -19,4 +23,13 @@ class Solution(object):
         :type extraCandies: int
         :rtype: List[bool]
         """
-        
+        max_candies = max(candies)
+        result = []
+
+        for kid in candies:
+            if kid + extraCandies >= max_candies:
+                result.append(True)
+            else:
+                result.append(False)
+
+        return result
