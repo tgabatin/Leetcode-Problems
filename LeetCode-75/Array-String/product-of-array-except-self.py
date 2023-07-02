@@ -16,5 +16,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        
+        n = len(nums)
+        answer = [1] * n
+
+        left_array = 1
+        for i in range(n):
+            answer[i] *= left_array
+            left_array *= nums[i]
+
+        right_array = 1
+        for i in range(n-1, -1, -1):
+            answer[i] *= right_array
+            right_array *= nums[i]
+
+        return answer
+
 
