@@ -18,5 +18,19 @@ class Solution(object):
         :rtype: List[List[int]]
         """
 
-        
+        set_nums1 = set(nums1)
+        set_nums2 = set(nums2)
+
+        answer1 = []
+        answer2 = []
+
+        for num in set_nums1:
+            if num not in set_nums2:
+                answer1.append(num)
+
+        for num in set_nums2:
+            if num not in set_nums1:
+                answer2.append(num)
+
+        return [answer1, answer2]
 
