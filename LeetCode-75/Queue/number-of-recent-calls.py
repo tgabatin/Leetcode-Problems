@@ -16,3 +16,22 @@ that have happened in the inclusive range [t - 3000, t].
 It is guaranteed that every call to ping uses a strictly larger value of t than
 the previous call. 
 """
+
+from collections import deque
+
+class RecentCounter(object):
+
+    def __init__(self):
+        self.requests = deque()
+
+    def ping(self, t):
+        """
+        :type t: int
+        :rtype: int
+        """
+        self.requests(t)
+
+        while self.requests[0] < t - 3000:
+            self.requests.popleft()
+
+        return len(self.requests)
