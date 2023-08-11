@@ -21,3 +21,16 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        stack = []
+        result = ""
+
+        for char in s:
+            if char == '*':
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(char)
+
+        result = ''.join(stack)
+
+        return result
