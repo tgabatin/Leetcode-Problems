@@ -22,3 +22,29 @@ class Solution(object):
         :type key: int
         :rtype: TreeNode
         """
+        if not root:
+            return None
+        
+        if key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        else:
+            if not root.left:
+                return root.right
+            elif not root.right:
+                return root.left
+            
+            # Find the minimum node in the right subtree
+            min_node = root.right
+            while min_node.left:
+                min_node = min_node.left
+            
+            # Copy the value of the minimum node to the current node
+            root.val = min_node.val
+            
+            # Delete the minimum node from the right subtree
+            root.right = self.deleteNode(root.right, min_node.val)
+        
+        return root
+
