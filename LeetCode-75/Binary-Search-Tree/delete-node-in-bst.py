@@ -47,4 +47,3 @@ class Solution(object):
             root.right = self.deleteNode(root.right, min_node.val)
         
         return root
-
