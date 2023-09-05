@@ -25,4 +25,20 @@ class Solution(object):
         :type root2: TreeNode
         :rtype: bool
         """
+        def get_leaf_values(node, leaf_values):
+            if not node:
+                return
+            if not node.left and not node.right:  # Check if the node is a leaf
+                leaf_values.append(node.val)
+            get_leaf_values(node.left, leaf_values)
+            get_leaf_values(node.right, leaf_values)
+
+        leaf_values1 = []
+        leaf_values2 = []
+
+        get_leaf_values(root1, leaf_values1)
+        get_leaf_values(root2, leaf_values2)
+
+        return leaf_values1 == leaf_values2
+
         
