@@ -16,6 +16,10 @@ Given two strings, word1 and word2, return true if word1 and word2 are close, an
 false otherwise. 
 """
 
+"""
+Runtime Complexity: O(N+M*log(M))
+Spacetime Complexity: O(N)
+"""
 class Solution(object):
     def closeStrings(self, word1, word2):
         """
