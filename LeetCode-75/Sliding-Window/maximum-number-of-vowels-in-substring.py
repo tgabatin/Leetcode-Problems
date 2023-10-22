@@ -29,3 +29,26 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        vowels = set("aeiou")
+
+        max_vowel_count = 0
+        current_vowel_count = 0
+
+        left = 0
+        right = 0
+
+        while right < len(s):
+            if s[right] in vowels:
+                current_vowel_count += 1
+
+            right += 1
+
+            if right - left == k:
+                max_vowel_count = max(max_vowel_count, current_vowel_count)
+
+                if s[left] in vowels:
+                    current_vowel_count -= 1
+
+                left += 1
+
+        return max_vowel_count
