@@ -17,26 +17,32 @@ class Solution(object):
         :rtype: int
         """
         ptr_1 = 0
-        ptr_2 = 0
         max_operations = 0
 
-        while ptr_1 < len(nums) - 1 and ptr_2 < len(nums):
-            current_sum = nums[ptr_1] + nums[ptr_2]
+        while ptr_1 < len(nums) - 1:
+            ptr_2 = ptr_1 + 1  # Initialize the second pointer at ptr_1 + 1
 
-            if current_sum == k:
-                max_operations += 1
-                nums.pop(ptr_2)
-                nums.pop(ptr_1)
-                ptr_2 = ptr_1 + 1
-            else:
+            while ptr_2 < len(nums):
+                current_sum = nums[ptr_1] + nums[ptr_2]
+
+                if current_sum == k:
+                    max_operations += 1
+                    # You found a pair, so mark the positions for removal
+                    to_remove = [ptr_1, ptr_2]
+                    # Break out of the inner loop
+                    break
+
                 ptr_2 += 1
-                
-            # Check to see if pointer has reached end
-            if ptr_2 >= len(nums):
+
+            if max_operations > 0:
+                # Remove the marked elements from the end of the list to the beginning
+                for i in reversed(to_remove):
+                    nums.pop(i)
+            else:
                 ptr_1 += 1
-                ptr_2 = ptr_1 + 1
-                
-            return max_operations
+
+        return max_operations
+
 
         
 # Thought Process
