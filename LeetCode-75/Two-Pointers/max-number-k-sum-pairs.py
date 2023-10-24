@@ -16,32 +16,24 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        ptr_1 = 0
+        count = {}  # Dictionary to store the count of each number
         max_operations = 0
 
-        while ptr_1 < len(nums) - 1:
-            ptr_2 = ptr_1 + 1  # Initialize the second pointer at ptr_1 + 1
+        for num in nums:
+            count[num] = count.get(num, 0) + 1
 
-            while ptr_2 < len(nums):
-                current_sum = nums[ptr_1] + nums[ptr_2]
-
-                if current_sum == k:
-                    max_operations += 1
-                    # You found a pair, so mark the positions for removal
-                    to_remove = [ptr_1, ptr_2]
-                    # Break out of the inner loop
-                    break
-
-                ptr_2 += 1
-
-            if max_operations > 0:
-                # Remove the marked elements from the end of the list to the beginning
-                for i in reversed(to_remove):
-                    nums.pop(i)
-            else:
-                ptr_1 += 1
+        for num in nums:
+            if count.get(num, 0) > 0 and count.get(k - num, 0) > 0:
+                if num == k - num:
+                    pairs = count[num] // 2
+                else:
+                    pairs = min(count[num], count[k - num])
+                max_operations += pairs
+                count[num] -= pairs
+                count[k - num] -= pairs
 
         return max_operations
+
 
 
         
