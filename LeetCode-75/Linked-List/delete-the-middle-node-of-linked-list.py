@@ -21,3 +21,40 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
+        # Check to see if a list exists
+        if not head:
+            return None
+        
+        count = 0
+        current = head
+        while current:
+            count += 1
+            current = current.next
+
+        middle_index = count // 2
+
+        current = head
+        prev = None
+        index = 0
+
+        while current:
+            if index == middle_index:
+                if prev:
+                    prev.next = current.next
+                else:
+                    head = head.next
+                break
+
+        prev = current
+        current = current.next
+        index += 1
+
+        return head
+        
+        # Determine the middle of 'head' and floor the output
+        # Iterate through the linked list up to the point of removal
+        # Remove the node at the point
+        # Return the new linked list 
+        
+
+        
