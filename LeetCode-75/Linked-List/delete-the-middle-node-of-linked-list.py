@@ -21,40 +21,28 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        # Check to see if a list exists
         if not head:
             return None
-        
-        count = 0
-        current = head
-        while current:
-            count += 1
-            current = current.next
 
-        middle_index = count // 2
-
-        current = head
+        # Initialize slow and fast pointers
+        slow = head
+        fast = head
         prev = None
-        index = 0
 
-        while current:
-            if index == middle_index:
-                if prev:
-                    prev.next = current.next
-                else:
-                    head = head.next
-                break
+        # Traverse the list with fast and slow pointers
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
 
-        prev = current
-        current = current.next
-        index += 1
+        # At this point, slow points to the middle node
+        # Remove the middle node
+        if prev:
+            prev.next = slow.next
+        else:
+            # If prev is None, it means we are removing the head node
+            head = head.next
 
         return head
-        
-        # Determine the middle of 'head' and floor the output
-        # Iterate through the linked list up to the point of removal
-        # Remove the node at the point
-        # Return the new linked list 
-        
 
         
