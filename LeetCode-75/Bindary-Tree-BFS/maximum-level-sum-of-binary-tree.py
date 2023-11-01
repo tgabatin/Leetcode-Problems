@@ -30,6 +30,7 @@ class Solution(object):
         # If there are no children, return the max_sum of the value of that level
         max_level = 1
         max_sum = root.val
+        level_sum = 0
         level = 1
 
         # If there are children, traverse to the next level and keep track of it in queue
@@ -54,9 +55,3 @@ class Solution(object):
                 level += 1
             
             return max_level
-
-        # If there is another level, add the values to this level
-        # Compare the maxSum to the value of this level and if the levelSum exceeds maxSum, update maxSum
-
-        # Stop once there are no more levels to iterate
-        # Return the value of maxSum
