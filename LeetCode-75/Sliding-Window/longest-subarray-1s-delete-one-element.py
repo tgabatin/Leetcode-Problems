@@ -13,4 +13,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        left = 0
+        right = 0
+        max_ones = 0
+
+        for num in nums:
+            if num == 1:
+                right += 1
+            else:
+                max_ones = max(max_ones, left + right)
+                left = right
+                right = 0
+
+            max_ones = max(max_ones, left + right)
+
+            return max_ones - 1 if max_ones == len(nums) else max_ones
+
