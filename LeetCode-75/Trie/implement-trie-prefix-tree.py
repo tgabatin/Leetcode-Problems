@@ -14,6 +14,11 @@ was inserted before), and false otherwise.
 string word that has the prefix prefix, and false otherwise.
 """
 
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+
 class Trie(object):
 
     def __init__(self):
