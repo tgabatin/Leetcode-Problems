@@ -25,6 +25,7 @@ class Trie(object):
         """
         Initialize the Trie object
         """
+        self.root = TrieNode()
         
 
     def insert(self, word):
@@ -32,6 +33,12 @@ class Trie(object):
         :type word: str
         :rtype: None
         """
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end_of_word = True
         
 
     def search(self, word):
@@ -39,6 +46,12 @@ class Trie(object):
         :type word: str
         :rtype: bool
         """
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        node.is_end_of_word = True
         
 
     def startsWith(self, prefix):
@@ -46,6 +59,12 @@ class Trie(object):
         :type prefix: str
         :rtype: bool
         """
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
         
 
 
