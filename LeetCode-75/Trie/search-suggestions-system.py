@@ -11,6 +11,11 @@ products.
 Returns a list of the suggested products after each character of searchWord is typed.
 """
 
+class TrieNode():
+    def __init__(self):
+        self.children = {}
+        self.suggestions = []
+
 class Solution(object):
     def suggestedProducts(self, products, searchWord):
         """
@@ -18,3 +23,26 @@ class Solution(object):
         :type searchWord: str
         :rtype: List[List[str]]
         """
+        root = TrieNode()
+
+        for product in sorted(products):
+            node = root
+            for char in product:
+                if char not in node.children:
+                    node.children[char] = TrieNode()
+                node = node.children[char]
+                if len(node.suggestions) < 3:
+                    node.suggestions.append(product)
+
+        result = []
+        node = root
+
+        for char in searchWord:
+            if char not in node.children:
+                node = node.children[char]
+                result.append(node.suggestions)
+            else:
+                result.append([])
+                node = TrieNode()
+
+        return result
