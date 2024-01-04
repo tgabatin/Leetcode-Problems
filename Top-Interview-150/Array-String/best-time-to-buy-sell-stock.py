@@ -12,14 +12,30 @@ any profit, return 0.
 """
 
 class Solution(object):
-    """
-    :type prices: List[int]
-    :rtype: int
-    """
-    maximum_profit = 0
-    minimum_profit = float('inf')
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
 
-    # Sliding window approach
+        minProfit = float('inf')
+        maxProfit = 0
 
-    # Iterate through the array
-    # 
+        for i in range(len(prices)):
+            if prices[i] < minProfit:
+                minProfit = prices[i]
+            elif prices[i] - minProfit > maxProfit:
+                maxProfit = prices[i]
+
+        return maxProfit
+    
+"""
+Explanation Solution:
+"""
+
+class Solution2(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int 
+        """
