@@ -28,7 +28,7 @@ class Solution(object):
 
         while l1 is not None or l2 is not None: 
             x = l1.val if l1 is not None else 0
-            y = l2.val if l1 is not None else 0
+            y = l2.val if l2 is not None else 0
 
             total = x + y + carry
             carry = total // 10
@@ -45,3 +45,9 @@ class Solution(object):
 
         return result.next
 
+
+"""
+Explanation Solution 1:
+
+
+"""
