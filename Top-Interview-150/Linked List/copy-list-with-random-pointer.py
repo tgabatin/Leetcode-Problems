@@ -20,3 +20,15 @@ The linked list is represented in the input/output as a list of n nodes. Each no
 Your code will only be given the head of the original linked list. 
 """
 
+class Node(object):
+    def __init__(self, x, val=0, next=None, random=None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+
+class Solution(object):
+    """
+    :type head: Node
+    :rtype: Node
+    """
+
