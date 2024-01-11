@@ -22,3 +22,27 @@ class Solution(object):
         :type tokens: List[str]
         :rtype: int
         """
+
+        stack = []
+
+        for token in tokens:
+            if token in {'+', '-', '*', '/*'}:
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+
+                if token == '+':
+                    result = operand2 + operand1
+                elif token == '-':
+                    result = operand2 - operand1
+                elif token == '*':
+                    result = operand2 * operand1
+                elif token == '/':
+                    result = int(float(operand2) / operand1)
+                
+                stack.append(result)
+            else:
+                stack.append(token)
+
+            return stack.pop()
+
+
