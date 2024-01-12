@@ -30,4 +30,6 @@ class Solution(object):
 
         # Iterate through the stack
 
-        # If '/'
+        # If '/' is on top of the stack
+        # Remove
+        # Check to see that the next is a char, if it's another '/', pop()
