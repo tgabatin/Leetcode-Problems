@@ -18,3 +18,16 @@ target file or directory (i.e., no period '.' or double period '..')
 
 Return the simplified canonical path. 
 """
+
+class Solution(object):
+    def simplifyPath(self, path):
+        """
+        :type path: str
+        :rtype: str
+        """
+
+        # Declare a stack
+
+        # Iterate through the stack
+
+        # If '/'
