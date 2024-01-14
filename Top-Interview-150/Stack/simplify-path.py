@@ -26,10 +26,18 @@ class Solution(object):
         :rtype: str
         """
 
-        # Declare a stack
+        stack = []
+        curent_dir = ''
 
-        # Iterate through the stack
+        for char in path.split('/'):
+            if char == '' or char == '.':
+                continue
+            elif char == '..':
+                if stack:
+                    stack.pop()
+                else:
+                    stack.append(char)
 
-        # If '/' is on top of the stack
-        # Remove
-        # Check to see that the next is a char, if it's another '/', pop()
+        result = '/' + '/'.join(stack)
+
+        return result
