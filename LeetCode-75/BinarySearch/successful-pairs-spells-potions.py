@@ -20,3 +20,29 @@ class Solution(object):
         :type success: int
         :rtype: List[int]
         """
+
+        potions.sort()
+
+        pairs = []
+
+        def binary_search_helper(spell):
+            low, high = 0, len(potions) - 1
+            count = 0
+
+            while low <= high:
+                mid = (low + high) // 2
+
+                if spell * potions[mid] >= success:
+                    count = len(potions) - 1
+                    high = mid - 1
+                else:
+                    low = mid + 1
+
+            return count
+        
+        for i in range(len(spells)):
+            count = binary_search_helper(spells[i])
+            pairs.append(count)
+
+        return pairs
+
