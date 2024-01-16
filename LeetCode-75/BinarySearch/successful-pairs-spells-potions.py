@@ -46,3 +46,8 @@ class Solution(object):
 
         return pairs
 
+"""
+Explanation Solution 1:
+
+
+"""
