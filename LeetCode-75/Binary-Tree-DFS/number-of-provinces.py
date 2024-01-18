@@ -20,4 +20,21 @@ class Solution(object):
         :type isConnected: List[List[int]]
         :rtype: int
         """
-        
+
+        def dfs(city, visited):
+            visited[city] = True
+
+            for neighbor in range(len(isConnected)):
+                if isConnected[city][neighbor] == 1 and not visited[neighbor]:
+                    dfs(neighbor, visited)
+
+        n = len(isConnected)
+        provinces = 0
+        visited = [False] * n
+
+        for city in range(n):
+            if not visited[city]:
+                dfs(city, visited)
+                provinces += 1
+
+        return provinces
