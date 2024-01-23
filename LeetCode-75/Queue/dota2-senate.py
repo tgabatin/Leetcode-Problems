@@ -26,9 +26,32 @@ party. Predict which party will finally announce the victory and change the Dota
 game. The output should be "Radiant" or "Dire". 
 """
 
+import deque
+
 class Solution(object):
     def predictPartyVictory(self, senate):
         """
         :type senate: str
         :rtype: str
         """
+        ban_count = {'R': 0, 'D': 0}
+        senators_queue = deque()
+
+        for i in range(len(senate)):
+            senators_queue.append(senate)
+
+        while ban_count['R'] < len(senate) and ban_count['D'] < len(senate):
+            current_senator = senators_queue.popleft()
+
+            if ban_count[current_senator] > 0:
+                ban_count[current_senator] -= 1
+                continue
+
+            if current_senator == 'R':
+                ban_count['D'] += 1
+            else:
+                ban_count['R'] += 1
+
+            senators_queue.append(current_senator)
+
+        return "Radiant" if ban_count['R'] < len(senate) else "Dire"
