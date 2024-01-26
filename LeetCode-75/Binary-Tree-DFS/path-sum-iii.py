@@ -22,3 +22,26 @@ class Solution(object):
         :type targetSum: int
         :rtype: int
         """
+        def dfs(node, current_sum, path_sums):
+            if not node:
+                return 0
+            
+            current_sum += node.val
+
+            count = path_sums.get(current_sum - targetSum, 0)
+
+            path_sums[current_sum] = path_sums.get(current_sum, 0) + 1
+
+            count += dfs(node.left, current_sum, path_sums)
+            count += dfs(node.right, current_sum, path_sums)
+
+            return count
+        
+        path_sums = {0:1}
+
+        return dfs(root, 0, path_sums)
+    
+"""
+Explanation
+Utilization of recursive DFS for solution.
+"""
