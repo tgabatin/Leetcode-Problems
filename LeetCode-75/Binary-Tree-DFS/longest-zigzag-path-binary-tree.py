@@ -24,27 +24,27 @@ class TreeNode(object):
         self.right = right
 
 class Solution(object):
-    def longestZigZag(self, root):
+    def longestZigZag(self, root, targetSum):
         """
         :type root: TreeNode
         :rtype: int
         """
-
-        def dfs(node, direction, length, max_length):
-            if not node:
-                return max_length
-            
-            max_length = max(max_length, length)
-
-            if direction == 'left':
-                max_length = dfs(node.left, 'right', length + 1, max_length)
-                max_length = dfs(node.right, 'left', 1, max_length)
-            else:
-                max_length = dfs(node.right, 'left', length + 1, max_length)
-                max_length = dfs(node.left, 'right', 1, max_length)
-            return max_length
+        self.count = 0
+        self.prefix_sum = {0 : 1}
+        self.dfs(root,targetSum, 0)
+        return self.count
+    
+    def dfs(self, node, targetSum, curr_sum):
+        if not node:
+            return 
         
-        max_length = 0
-        max_length = dfs(root, 'left', 0, max_length)
-        max_length = dfs(root, 'right', 0, max_length)
-        return max_length
+        curr_sum += node.val
+
+        self.count += self.prefix_sum.get(curr_sum - targetSum, 0)
+        self.prefix_sum[curr_sum] = self.prefix_sum.get(curr_sum, 0) + 1
+
+        self.dfs(node.left, targetSum, curr_sum)
+        self.dfs(node.right, targetSum, curr_sum)
+
+        self.prefix_sum[curr_sum] -= 1
+    
